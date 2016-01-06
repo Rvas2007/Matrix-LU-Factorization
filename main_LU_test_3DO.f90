@@ -80,7 +80,8 @@ subroutine test_case ( n,i_mm,i_LU,wtime_mm,wtime_LU,err)
      al(i,i)=1.; al(i,1:i-1)= a(i,1:i-1)
      au(i,i:n)= a(i,i:n)
   enddo 
-            
+  a(1:n,1:n)=0.;
+    ORDER=seqen(i_mm)        
    wtime_mm = omp_get_wtime ( )
    call  ordered_MATMULT(order,n,n,n,al,au,a)   
    wtime_mm = omp_get_wtime ( ) - wtime_mm 
